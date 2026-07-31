@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>УСТА АИ — Курулуш эсептөөчү</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="mark"><span class="dot"></span>УСТА АИ<span class="dot"></span></div>
+      <div class="tag" data-t="tagline">Курулуш инженердик эсептөөлөрү</div>
+    </div>
+    <div class="lang-toggle">
+      <button id="btn-kg" class="active" onclick="setLang('kg')">КЫР</button>
+      <button id="btn-ru" onclick="setLang('ru')">РУС</button>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <div id="view-home">
+    <div class="bracket" style="margin-bottom:18px;">
+      <span class="bl"></span><span class="br"></span>
+      <div class="meta">
+        <div class="field">
+          <label data-t="projectNameLabel">Объекттин аты</label>
+          <input type="text" id="projectName" placeholder="Мис.: Тургун үй, Чүй көч. 14" data-tph="projectNamePh">
+        </div>
+        <div class="field">
+          <label data-t="dateLabel">Дата</label>
+          <input type="date" id="projectDate">
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card" onclick="openModule('fundament')">
+        <div class="idx">01 / FR-001</div>
+        <h3 data-t="modFundament">Фундамент</h3>
+        <p data-t="modFundamentDesc">Бетон, цемент, кум, шагыл жана арматура көлөмүн эсептейт.</p>
+        <div class="go">→</div>
+      </div>
+      <div class="card" onclick="openModule('dubal')">
+        <div class="idx">02 / FR-002</div>
+        <h3 data-t="modDubal">Дубал</h3>
+        <p data-t="modDubalDesc">Материал санын, раствор/клей жана сеткинин муктаждыгын эсептейт.</p>
+        <div class="go">→</div>
+      </div>
+      <div class="card" onclick="openModule('chatyr')">
+        <div class="idx">03 / FR-003</div>
+        <h3 data-t="modChatyr">Чатыр</h3>
+        <p data-t="modChatyrDesc">Жабуу материалын, стропиланы, конекти жана изоляцияны эсептейт.</p>
+        <div class="go">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUNDAMENT MODULE -->
+  <div id="view-fundament" style="display:none;">
+    <div class="module-header">
+      <button class="back-btn" onclick="goHome()">← <span data-t="back">Артка</span></button>
+      <div class="module-title" data-t="modFundament">Фундамент</div>
+    </div>
+    <div class="bracket">
+      <span class="bl"></span><span class="br"></span>
+
+      <div class="form-section">
+        <h4 data-t="secInputs">Киргизилүүчү маалыматтар</h4>
+        <div class="form-grid">
+          <div class="field">
+            <label data-t="funType">Фундаменттин түрү</label>
+            <select id="f_type">
+              <option value="lentalyk" data-t="funTypeLenta">Ленталык</option>
+              <option value="plitalyk" data-t="funTypePlita">Плиталык</option>
+              <option value="bagana" data-t="funTypeBagana">Баганалуу</option>
+            </select>
+          </div>
+          <div class="field">
+            <label data-t="concreteGrade">Бетон маркасы</label>
+            <select id="f_grade">
+              <option value="M100">M100</option>
+              <option value="M150">M150</option>
+              <option value="M200" selected>M200</option>
+              <option value="M250">M250</option>
+              <option value="M300">M300</option>
+              <option value="M400">M400</option>
+            </select>
+          </div>
+          <div class="field" data-field="length">
+            <label data-t="lengthLabel">Узундугу</label>
+            <div class="num-wrap"><input type="number" id="f_length" step="any" placeholder="0"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="width">
+            <label data-t="widthLabel">Туурасы</label>
+            <div class="num-wrap"><input type="number" id="f_width" step="any" placeholder="0"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="height">
+            <label data-t="heightLabel">Бийиктиги</label>
+            <div class="num-wrap"><input type="number" id="f_height" step="any" placeholder="0"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="rebar_diameter">
+            <label data-t="rebarDiameter">Арматуранын диаметри</label>
+            <div class="num-wrap"><input type="number" id="f_rdia" step="any" placeholder="0"><span class="unit">мм</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="rebar_count">
+            <label data-t="rebarCount">Арматуранын саны</label>
+            <div class="num-wrap"><input type="number" id="f_rcount" step="1" placeholder="0"><span class="unit">даана</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="reserve">
+            <label data-t="reservePercent">Запас пайызы</label>
+            <div class="num-wrap"><input type="number" id="f_reserve" step="any" placeholder="0" value="5"><span class="unit">%</span></div>
+            <div class="err-msg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" onclick="calcModule('fundament')" data-t="calcBtn">Эсептөө</button>
+        <button class="secondary" id="fundament-pdf-btn" disabled onclick="downloadPdf('fundament')" data-t="pdfBtn">PDF жүктөө</button>
+      </div>
+
+      <div class="results" id="fundament-results">
+        <div class="results-banner">✓ <span data-t="resultsReady">Эсептөө бүттү</span></div>
+        <div class="result-grid" id="fundament-result-grid"></div>
+        <div class="note-box" data-t="funNote">Эскертүү: бетон курамынын пропорциялары орточо нормативдик көрсөткүчтөр боюнча эсептелди. Так долбоор үчүн инженер менен текшериңиз.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WALL MODULE -->
+  <div id="view-dubal" style="display:none;">
+    <div class="module-header">
+      <button class="back-btn" onclick="goHome()">← <span data-t="back">Артка</span></button>
+      <div class="module-title" data-t="modDubal">Дубал</div>
+    </div>
+    <div class="bracket">
+      <span class="bl"></span><span class="br"></span>
+
+      <div class="form-section">
+        <h4 data-t="secInputs">Киргизилүүчү маалыматтар</h4>
+        <div class="form-grid">
+          <div class="field">
+            <label data-t="wallMaterial">Материал</label>
+            <select id="w_material">
+              <option value="kirpich" data-t="matKirpich">Кирпич</option>
+              <option value="pescoblok" data-t="matPescoblok">Пескоблок</option>
+              <option value="penoblok" data-t="matPenoblok">Пеноблок</option>
+              <option value="gazoblok" data-t="matGazoblok">Газоблок</option>
+              <option value="shlakoblok" data-t="matShlakoblok">Шлакоблок</option>
+            </select>
+          </div>
+          <div class="field" data-field="seam">
+            <label data-t="seamLabel">Шов</label>
+            <div class="num-wrap"><input type="number" id="w_seam" step="any" placeholder="0" value="10"><span class="unit">мм</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="length">
+            <label data-t="lengthLabel">Узундугу</label>
+            <div class="num-wrap"><input type="number" id="w_length" step="any" placeholder="0"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="height">
+            <label data-t="heightLabel">Бийиктиги</label>
+            <div class="num-wrap"><input type="number" id="w_height" step="any" placeholder="0"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="thickness">
+            <label data-t="thicknessLabel">Калыңдыгы</label>
+            <div class="num-wrap"><input type="number" id="w_thickness" step="any" placeholder="0"><span class="unit">мм</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="doors">
+            <label data-t="doorsLabel">Эшиктердин жалпы аянты</label>
+            <div class="num-wrap"><input type="number" id="w_doors" step="any" placeholder="0" value="0"><span class="unit">м²</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="windows">
+            <label data-t="windowsLabel">Терезелердин жалпы аянты</label>
+            <div class="num-wrap"><input type="number" id="w_windows" step="any" placeholder="0" value="0"><span class="unit">м²</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="reserve">
+            <label data-t="reservePercent">Запас пайызы</label>
+            <div class="num-wrap"><input type="number" id="w_reserve" step="any" placeholder="0" value="5"><span class="unit">%</span></div>
+            <div class="err-msg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" onclick="calcModule('dubal')" data-t="calcBtn">Эсептөө</button>
+        <button class="secondary" id="dubal-pdf-btn" disabled onclick="downloadPdf('dubal')" data-t="pdfBtn">PDF жүктөө</button>
+      </div>
+
+      <div class="results" id="dubal-results">
+        <div class="results-banner">✓ <span data-t="resultsReady">Эсептөө бүттү</span></div>
+        <div class="result-grid" id="dubal-result-grid"></div>
+        <div class="note-box" data-t="dubalNote">Эскертүү: материалдын өлчөмдөрү орточо стандарттык көрсөткүчтөр боюнча алынды. Так каталог өлчөмдөрү боюнча айырмаланышы мүмкүн.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROOF MODULE -->
+  <div id="view-chatyr" style="display:none;">
+    <div class="module-header">
+      <button class="back-btn" onclick="goHome()">← <span data-t="back">Артка</span></button>
+      <div class="module-title" data-t="modChatyr">Чатыр</div>
+    </div>
+    <div class="bracket">
+      <span class="bl"></span><span class="br"></span>
+
+      <div class="form-section">
+        <h4 data-t="secInputs">Киргизилүүчү маалыматтар</h4>
+        <div class="form-grid">
+          <div class="field">
+            <label data-t="roofForm">Формасы</label>
+            <select id="r_form">
+              <option value="odno" data-t="formOdno">Однoскатная</option>
+              <option value="dvux" selected data-t="formDvux">Двухскатная</option>
+              <option value="chetyre" data-t="formChetyre">Четырехскатная</option>
+              <option value="L" data-t="formL">L-формасы</option>
+              <option value="G" data-t="formG">Г-формасы</option>
+              <option value="T" data-t="formT">Т-формасы</option>
+            </select>
+          </div>
+          <div class="field">
+            <label data-t="roofMaterial">Материал</label>
+            <select id="r_material">
+              <option value="metal" data-t="matMetal">Металл профиль</option>
+              <option value="ondulin" data-t="matOndulin">Ондулин</option>
+              <option value="shifer" data-t="matShifer">Шифер</option>
+              <option value="cherepitsa" data-t="matCherepitsa">Металл черепица</option>
+            </select>
+          </div>
+          <div class="field" data-field="length">
+            <label data-t="buildLength">Үйдүн узундугу</label>
+            <div class="num-wrap"><input type="number" id="r_length" step="any" placeholder="0"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="width">
+            <label data-t="buildWidth">Үйдүн туурасы</label>
+            <div class="num-wrap"><input type="number" id="r_width" step="any" placeholder="0"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="angle">
+            <label data-t="angleLabel">Бурч</label>
+            <div class="num-wrap"><input type="number" id="r_angle" step="any" placeholder="0" value="30"><span class="unit">°</span></div>
+            <div class="err-msg"></div>
+          </div>
+          <div class="field" data-field="sves">
+            <label data-t="svesLabel">Свес</label>
+            <div class="num-wrap"><input type="number" id="r_sves" step="any" placeholder="0" value="0.5"><span class="unit">м</span></div>
+            <div class="err-msg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" onclick="calcModule('chatyr')" data-t="calcBtn">Эсептөө</button>
+        <button class="secondary" id="chatyr-pdf-btn" disabled onclick="downloadPdf('chatyr')" data-t="pdfBtn">PDF жүктөө</button>
+      </div>
+
+      <div class="results" id="chatyr-results">
+        <div class="results-banner">✓ <span data-t="resultsReady">Эсептөө бүттү</span></div>
+        <div class="result-grid" id="chatyr-result-grid"></div>
+        <div class="note-box" data-t="chatyrNote">Эскертүү: чатыр эсептөөлөрү жөнөкөйлөштүрүлгөн геометрия менен алынды. Татаал чатыр формалары үчүн инженер менен текшериңиз.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer data-t="footer">УСТА АИ · v0.1 (Guest режими, каттоосуз) · Бардык эсептөөлөр орточо нормативдик маалыматтарга негизделген</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
