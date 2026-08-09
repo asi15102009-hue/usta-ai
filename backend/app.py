@@ -12,12 +12,16 @@ import wall
 import roof
 from utils import ValidationError
 from pdf import generate_pdf
-
+from architect import architect_bp
+from database import init_db
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), "frontend")
 
 app = Flask(__name__, static_folder=None)
 CORS(app)
+
+init_db()
+app.register_blueprint(architect_bp)
 
 CALCULATORS = {
     "foundation": foundation.calculate,

@@ -1,0 +1,82 @@
+/* Архитектор модулу — өзүнчө CSS файл, style.css'ке такыр тийбейт.
+   Түстөр/шрифттер style.css'тегi :root өзгөрмөлөрү менен бирдей. */
+
+#view-architect .arch-toolbar{
+  display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; margin-bottom:18px;
+}
+#view-architect .arch-search{flex:1 1 320px;}
+#view-architect .arch-search input{
+  width:100%; font-family:'IBM Plex Sans', sans-serif; font-size:14.5px;
+  border:1px solid rgba(22,32,43,0.14); border-radius:4px; padding:10px 12px;
+}
+#view-architect .arch-filters{
+  display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;
+}
+#view-architect .arch-filters select{
+  font-family:'IBM Plex Sans', sans-serif; font-size:13px; border:1px solid rgba(22,32,43,0.14);
+  border-radius:4px; padding:8px 10px; background:#fff;
+}
+#view-architect .arch-chip{
+  font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.3px;
+  border:1px solid rgba(22,32,43,0.14); border-radius:4px; padding:8px 12px;
+  cursor:pointer; background:#fff; color:#4C5A66; user-select:none;
+}
+#view-architect .arch-chip.active{background:#2B4B63; color:#fff; border-color:#2B4B63;}
+
+#view-architect .arch-meta-row{
+  font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:#4C5A66; margin-bottom:14px;
+}
+
+#view-architect .arch-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:16px;
+}
+#view-architect .arch-card{
+  background:#fff; border:1px solid rgba(22,32,43,0.14); border-radius:4px; overflow:hidden;
+  cursor:pointer; transition:transform .12s ease, box-shadow .12s ease;
+}
+#view-architect .arch-card:hover{transform:translateY(-2px); box-shadow:0 6px 18px rgba(22,32,43,0.10);}
+#view-architect .arch-card .arch-thumb{
+  height:120px; background:#DCE6EC; display:flex; align-items:center; justify-content:center;
+}
+#view-architect .arch-card .arch-thumb svg{width:70%; height:70%;}
+#view-architect .arch-card .arch-body{padding:14px;}
+#view-architect .arch-card h4{
+  font-family:'Oswald', sans-serif; font-size:16px; margin:0 0 4px; text-transform:uppercase; letter-spacing:.3px;
+}
+#view-architect .arch-card .arch-style{font-size:12px; color:#C4441A; font-weight:600; margin-bottom:8px;}
+#view-architect .arch-card .arch-stats{
+  display:flex; flex-wrap:wrap; gap:6px 12px; font-size:12px; color:#4C5A66;
+  font-family:'IBM Plex Mono', monospace;
+}
+#view-architect .arch-badge{
+  display:inline-block; font-size:10.5px; font-family:'IBM Plex Mono', monospace;
+  padding:2px 7px; border-radius:3px; margin-top:8px; letter-spacing:.3px;
+}
+#view-architect .arch-badge.editable{background:#E7F2EA; color:#3F7A52;}
+#view-architect .arch-badge.reference{background:#FBEAE7; color:#B23A2E;}
+
+#view-architect .arch-empty{
+  text-align:center; padding:40px 20px; color:#4C5A66; font-size:14px;
+}
+
+/* Долбоор деталы */
+#view-architect .arch-detail-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:24px;}
+@media (max-width:760px){#view-architect .arch-detail-grid{grid-template-columns:1fr;}}
+#view-architect .arch-plan-box{
+  background:#fff; border:1px solid rgba(22,32,43,0.14); border-radius:4px; padding:16px;
+}
+#view-architect .arch-plan-box svg{width:100%; height:auto; display:block;}
+#view-architect .arch-info-box{
+  background:#fff; border:1px solid rgba(22,32,43,0.14); border-radius:4px; padding:18px;
+}
+#view-architect .arch-info-row{
+  display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(22,32,43,0.08);
+  font-size:13.5px;
+}
+#view-architect .arch-info-row .k{color:#4C5A66;}
+#view-architect .arch-info-row .v{font-family:'IBM Plex Mono', monospace; font-weight:600; color:#2B4B63;}
+#view-architect .arch-note{
+  margin-top:14px; padding:10px 12px; border-radius:4px; font-size:12.5px; line-height:1.6;
+}
+#view-architect .arch-note.warn{background:#FBEAE7; color:#B23A2E;}
+#view-architect .arch-note.info{background:#DCE6EC; color:#2B4B63;}

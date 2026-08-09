@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="architect.css">
 </head>
 <body>
 <div class="wrap">
@@ -58,6 +59,12 @@
         <p data-t="modChatyrDesc">Жабуу материалын, стропиланы, конекти жана изоляцияны эсептейт.</p>
         <div class="go">→</div>
       </div>
+      <div class="card" onclick="openArchitect()">
+  <div class="idx">04 / ARCH-001</div>
+  <h3>Архитектор</h3>
+  <p>Даяр үй долбоорлорунун каталогу — издөө, фильтр жана 2D план көрүү.</p>
+  <div class="go">→</div>
+</div>
     </div>
   </div>
 
@@ -279,9 +286,12 @@
     </div>
   </div>
 
+  <div id="view-architect" style="display:none;"></div>
+
   <footer data-t="footer">УСТА АИ · v0.1 (Guest режими, каттоосуз) · Бардык эсептөөлөр орточо нормативдик маалыматтарга негизделген</footer>
 </div>
 
 <script src="script.js"></script>
+<script src="architect.js"></script>
 </body>
 </html> 
